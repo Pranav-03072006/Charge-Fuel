@@ -1,0 +1,98 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    body{
+        background-image:url('{% static 'images/companylogin3.gif'%}');
+        background-size:100%;
+    }
+
+    .texttheme
+    {
+        background-color:white;
+        background-image:url('{% static 'images/ID.jpg' %}');
+        background-size:10%;
+        background-repeat: no-repeat;
+        background-position-x: right;
+        width:80%;
+        height:50px;
+        border:solid;
+        color: black;
+    }
+    .texttheme1
+    {
+        background-color:white;
+        background-image:url('{% static 'images/password.png' %}');
+        background-size:9%;
+        background-repeat: no-repeat;
+        background-position-x: right;
+        width:80%;
+        height:50px;
+        border:solid;
+        color: black;
+    }
+    .formtheme{
+    font-family:arial;
+        border:solid;
+        border-color:white;
+        width:600px;
+        height:500px;
+        margin-left:10px;
+        margin-top: 150px;
+        background-color:rgba(0,0,0,0.8);
+        color:white;
+        box-shadow:10px 10px 10px black;
+        text-align:center;
+    }
+    .buttontheme{
+            width:80%;
+        text-align:center;
+        height:50px;
+        background-color:gray;
+        color:white;
+        font-size:20px;
+        text-transform: uppercase;
+
+        {#border-bottom-right-radius:50px;#}
+        {#border-bottom-left-radius: 50px;#}
+
+    }
+
+</style>
+<body>
+
+<div class="formtheme">
+     <form action="companylogincodedb" method="post">
+        {% csrf_token %}
+    <table align="center" width="100%" cellspacing="20px" border="0">
+        <tr STYLE="text-align:center;font-size:20px;background-color:gray;height: 40px;">
+            <td>COMPANY SIGN IN SECTION</td>
+        </tr>
+        <tr>
+        <td>ID</td>
+        </tr>
+        <tr>
+           <td><input type="text" name="uid" placeholder="Enter Id" required="true" class="texttheme"></td>
+        </tr>
+        <tr>
+            <td>PASSWORD</td>
+        </tr>
+        <tr>
+            <td><input type="password" name="password" placeholder="Enter Password" required="true" class="texttheme1"></td>
+        </tr>
+        <tr align="center">
+            <td><input type="submit" value="Sign In" class="buttontheme" style="text-align: center"></td>
+        </tr>
+        <tr>
+            <td>{{ error_msg }}</td>
+        </tr>
+    </table>
+     </form>
+</div>
+
+</body>
+</html>

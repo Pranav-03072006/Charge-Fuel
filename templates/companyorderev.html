@@ -1,0 +1,104 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    body{
+        background-image:url('{% static 'images/companydashboard10.png'%}');
+        background-size:100%;
+    }
+    .tabtheme
+    {
+        text-align:center;
+        font-family: Arial;
+        height:100px;
+        width:100%;
+        font-size:25px;
+        margin-left: -10px;
+        margin-top: 15px;
+        position: relative;
+        animation: bankeases 1s;
+        text-transform:uppercase;
+    }
+     @keyframes bankeases
+        {
+            from{top:-100px;}
+            to{top:0px;}
+        }
+
+
+    a
+    {
+        color: red;
+        text-decoration: none;
+    }
+
+    a:hover{
+        color: red;
+        text-decoration: underline;
+    }
+
+    .box{
+        color: orange;
+        border-radius:40px;
+        transition:transform  .5s;
+    }
+    .box:hover
+    {
+        color: orange;
+        transform:scale(1.3);
+    }
+    .formtheme{
+    width:100%;
+    height: 400px;
+    background-size:40%;
+    background-repeat: repeat-x;
+    margin-top:50px;
+}
+
+
+
+</style>
+<body>
+<div style="width:100%;height:50px">
+    <table width="100%" class="tabtheme">
+        <tr>
+            <td class="box"><a href="companydashboardlink" >Dashboard</a></td>
+            <td class="box"><a href="companycustomerscodedb">Customers</a></td>
+            <td class="box"><a href="companycontactcodedb">Contact</a></td>
+            <td class="box"><a href="companyorderfuelcodedb">Fuel</a></td>
+            <td class="box"><a href="companyorderevcodedb">EV</a></td>
+            <td class="box"><a href="companysettingslink">settings</a></td>
+            <td class="box"><a href="companycomplaincodedb">complain</a></td>
+            <td class="box"><a href="companyfeedbackcodedb">feedback</a></td>
+            <td class="box"><a href="companylink">signout</a></td>
+        </tr>
+    </table>
+</div>
+<div class="formtheme">
+<br><br>
+    <table width="80%" align="center" style="border:solid">
+        <tr align="center"  style="background-color:black;color:white;">
+            <td>Customer Id</td>
+            <td>Order Id</td>
+            <td>Drop Location</td>
+            <td>Contact</td>
+        </tr>
+        {% for records in data %}
+            <tr align="center">
+                <td>{{ records.0 }}</td>
+                <td>{{ records.1 }}</td>
+                <td>{{ records.2 }}</td>
+                <td>{{ records.3 }}</td>
+            </tr>
+        {% endfor %}
+
+
+    </table>
+
+</div>
+</body>
+</html>

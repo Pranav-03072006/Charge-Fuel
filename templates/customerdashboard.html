@@ -1,0 +1,127 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    body{
+        background-image:url('{% static 'images/ev charging10.gif'%}');
+        background-size:100%;
+    }
+    .tabtheme
+    {
+        text-align:center;
+        font-family: Arial;
+        text-decoration-color: white;
+        height:100px;
+        width:75%;
+        font-size:25px;
+        text-decoration: none;
+        {#text-align: center;#}
+        margin-left: 350px;
+        margin-top: 15px;
+        position: relative;
+        animation: bankeases 1s;
+        text-transform:uppercase;
+    }
+     @keyframes bankeases
+        {
+            from{top:-100px;}
+            to{top:0px;}
+        }
+
+
+    a
+    {
+        color: WHITE;
+        text-decoration: none;
+    }
+
+    a:hover{
+        color: whitesmoke;
+        text-decoration: underline;
+    }
+
+    .outerdiv
+    {
+
+        width: 48%;
+        height: 140px;
+        background-color: rgba(255,255,255,0.7);
+        margin-left: 410px;
+        position: relative;
+        margin-top: 80px;
+        border-radius: 25px;
+        border: double;
+        border-color: white;
+        color: white;
+        background-color:rgba(0,0,0,0.2);
+        transition: 0.3s;
+
+    }
+
+    .outerdiv:hover
+    {
+        transform: translateY(-8px);
+        box-shadow: 0 8px 20px rgba(255, 255, 255, 0.6);
+    }
+
+
+    .slogan
+    {
+        font-size: 24px;
+        position: relative;
+        margin-left: 20px;
+        margin-top: 5px;
+    }
+    .box{
+        color: #18312e;
+        border-radius:40px;
+        transition:transform  .5s;
+    }
+    .box:hover
+    {
+        color: #18312e;
+        transform:scale(1.3);
+    }
+
+
+</style>
+<body>
+<div style="width:100%;height:50px">
+    <table width="100%" class="tabtheme">
+        <tr>
+            <td class="box"><a href="customerdashboardlink" style="color: white" >Dashboard</a></td>
+            <td class="box"><a href="orderlink" style="color: white">Order</a></td>
+            <td class="box"><a href="settingslink" style="color: white">settings</a></td>
+            <td class="box"><a href="complainlink" style="color: white">complain</a></td>
+            <td class="box"><a href="feedbacklink" style="color: white">feedback</a></td>
+            <td class="box"><a href="accountslink" style="color: white">accounts</a></td>
+            <td class="box"><a href="homelink" style="color: white">signout</a></td>
+        </tr>
+    </table>
+</div>
+<div class="outerdiv">
+
+    <h1 class="slogan">"Whether you're parked at home or stuck on the side of the road, our 24/7 mobile energy service brings the station to you. We provide dependable EV charging and fuel delivery exactly where you are, ensuring you’re never stranded and always ready to move."
+</h1>
+
+</div>
+<div>
+    <table align=center width=50%>
+<tr>
+	<td style="color:red;font-size: 25px;"><marquee scrollamount=15>
+    "OUR SERVICES IS AVAILABLE AT ANY TIME ALL OVER THE COUNTRY"
+	</marquee></td>
+</tr>
+    </table>
+</div>
+
+
+
+</div>
+
+</body>
+</html>
