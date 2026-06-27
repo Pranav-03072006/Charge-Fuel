@@ -76,12 +76,26 @@ WSGI_APPLICATION = 'ChargeFuel.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': '/tmp/db.sqlite3' if os.environ.get('VERCEL') else BASE_DIR / 'db.sqlite3',
+import dj_database_url
+
+# Database
+# https://docs.djangoproject.com/en/5.2/ref/settings/#databases
+
+# On Vercel, the POSTGRES_URL environment variable is set automatically.
+# Locally, we fall back to the SQLite file.
+DATABASE_URL = os.environ.get('POSTGRES_URL')
+
+if DATABASE_URL:
+    DATABASES = {
+        'default': dj_database_url.parse(DATABASE_URL, conn_max_age=600)
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 
 
 # Password validation
