@@ -1,0 +1,179 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    body{
+        background-image:url('{% static 'images/login.gif'%}');
+        background-size:100%;
+    }
+    .tabtheme {
+        text-transform: uppercase;
+        text-align: center;
+        font-family: Arial;
+        text-decoration: none;
+        height: 40px;
+        width: 1000px;
+        font-size: 25px;
+        box-shadow: 10px 10px 10px;
+    }
+    .buttontheme{
+        text-align:center;
+        font-family: "Arial Black";
+        text-decoration: none;
+        margin-left: 200px;
+        margin-top: 1px;
+        font-size: 20px;
+        }
+    {#.wwwtheme{#}
+    {#    text-align:center;#}
+    {#    font-family: "Arial Black";#}
+    {#    text-decoration: none;#}
+    {#    margin-left: 180px;#}
+    {#    margin-top: 175px;#}
+    {#    font-size: 28px;#}
+    {#    color: black;#}
+    {#}#}
+    a{
+    text-decoration: none;
+    }
+    .texttheme{
+    width:100%;
+        height:30px;
+        border:solid;
+    }
+    .formtheme{
+    font-family:arial;
+        border:solid;
+        border-color:white;
+        width:700px;
+        height:750px;
+        margin-left:380px;
+        margin-top: 10px;
+        background-color:rgba(0,0,0,0.8);
+        color:white;
+        box-shadow:10px 10px 10px black;
+        text-align:left;
+    }
+    {#.buttontheme{#}
+    {#width:50%;#}
+    {#    text-align:center;#}
+    {#    height:30px;#}
+    {#    background-color:gray;#}
+    {#    color:white;#}
+
+
+    .maindiv
+    {
+        width: 100%;
+        height: 805px;
+        background-color:rgba(255,255,255,0.5);
+    }
+
+
+</style>
+<body>
+<div class="maindiv">
+
+<div style="width:100%;height:50px">
+    <table width="70%" class="tabtheme" align="center">
+        <tr>
+            <td><a href="homelink" style="color:black">home</a></td>
+            <td><a href="aboutlink" style="color:black">about</a></td>
+            <td><a href="serviceslink" style="color:black">services</a></td>
+            <td><a href="contactlink" style="color:black">contact</a></td>
+        </tr>
+    </table>
+</div>
+
+<div class="formtheme">
+    <form action="signupcodedb" method="post">
+        {% csrf_token %}
+{#        cross site reference foreger#}
+{#        It is used to secure form data corresponding to different types of security layers#}
+    <table align="center" width="80%" cellspacing="5px">
+        <tr STYLE="text-align:center;font-size:30px; color:#f10606">
+            <td><b>USER SIGN UP SECTION</b></td>
+        </tr>
+        <tr>
+        <td>Id</td>
+        </tr>
+        <tr>
+        <td><input type="text" name="uid" placeholder="Enter Id" required="true" class="texttheme"></td>
+        </tr>
+        <tr>
+            <td>Password</td>
+        </tr>
+        <tr>
+            <td><input type="password" name="password" placeholder="Enter Password" required="true" class="texttheme"></td>
+        </tr>
+        <tr>
+            <tr>
+        <td>Full Name</td>
+        </tr>
+        <tr>
+        <td><input type="text" name="fullname" placeholder="Enter Full Name" required="true" class="texttheme"></td>
+        </tr>
+        <tr>
+            <td>Address</td>
+        </tr>
+        <tr>
+            <td><input type="text" name="address" placeholder="Enter Address" required="true" class="texttheme"></td>
+        </tr>
+        <tr>
+        <td>City</td>
+        </tr>
+        <tr>
+        <td><input type="text" name="city" placeholder="Enter City" required="true" class="texttheme"></td>
+        </tr>
+        <tr>
+            <td>Contact</td>
+        </tr>
+        <tr>
+            <td><input type="number" name="contact" placeholder="Enter Contact Number" required="true" class="texttheme"></td>
+        </tr>
+        <tr>
+        <td>Gender</td>
+        </tr>
+        <tr>
+       <td><select required="true" name="gender" class="texttheme">
+        <option> SELECT GENDER</option>
+            <option> MALE</option>
+            <option> FEMALE</option>
+            </select> </td>
+        </tr>
+        <tr>
+            <td>DOB</td>
+        </tr>
+        <tr>
+            <td><input type="date" name="dob" placeholder="Enter DOB" required="true" class="texttheme"></td>
+        </tr>
+        <tr>
+        <td>Email Id</td>
+        </tr>
+        <tr>
+        <td><input type="email" name="mail" placeholder="Enter Email Id" required="true" class="texttheme"></td>
+        </tr>
+
+
+
+        <tr>
+            <td><input type="submit" value="SIGN UP" class="buttontheme" style="text-align: center"></td>
+        </tr>
+         <tr style="color:red" align="center">
+            <td> Already have an Account? <a href="loginlink" style="color:red">Sign In</a></td>
+        </tr>
+        <tr>
+            <td>{{ signup_message }}</td>
+        </tr>
+    </table>
+        </form>
+
+</div>
+    </div>
+
+</body>
+</html>

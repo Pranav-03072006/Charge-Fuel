@@ -1,0 +1,117 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    body{
+        background-image:url('{% static 'images/companydashboard10.png'%}');
+        background-size:100%;
+    }
+    .tabtheme
+    {
+        text-align:center;
+        font-family: Arial;
+        height:100px;
+        width:100%;
+        font-size:25px;
+        margin-left: -10px;
+        margin-top: 15px;
+        position: relative;
+        animation: bankeases 1s;
+        text-transform:uppercase;
+    }
+     @keyframes bankeases
+        {
+            from{top:-100px;}
+            to{top:0px;}
+        }
+
+
+    a
+    {
+        color: red;
+        text-decoration: none;
+    }
+
+    a:hover{
+        color: red;
+        text-decoration: underline;
+    }
+
+
+
+    .outerdiv
+    {
+
+        width: 60%;
+        height: 250px;
+        background-color: rgba(255,255,255,0.7);
+        margin-left: 280px;
+        position: relative;
+        margin-top: 80px;
+        border-radius: 25px;
+        border: double;
+        border-color: white;
+        color: white;
+        background-color:rgba(0,0,0,0.2);
+        transition: 0.3s;
+
+    }
+
+    .outerdiv:hover
+    {
+        transform: translateY(-8px);
+        box-shadow: 0 8px 20px rgba(255, 255, 255, 0.6);
+    }
+
+
+    .slogan
+    {
+        color: yellow;
+        font-size: 40px;
+        position: relative;
+        margin-left: 20px;
+        margin-top: 5px;
+    }
+    .box{
+        color: orange;
+        border-radius:40px;
+        transition:transform  .5s;
+    }
+    .box:hover
+    {
+        color: orange;
+        transform:scale(1.3);
+    }
+
+
+</style>
+<body>
+<div style="width:100%;height:50px">
+    <table width="100%" class="tabtheme">
+        <tr>
+            <td class="box"><a href="companydashboardlink" >Dashboard</a></td>
+            <td class="box"><a href="companycustomerscodedb">Customers</a></td>
+            <td class="box"><a href="companycontactcodedb">Contact</a></td>
+            <td class="box"><a href="companyorderfuelcodedb">Fuel</a></td>
+            <td class="box"><a href="companyorderevcodedb">EV</a></td>
+            <td class="box"><a href="companysettingslink">settings</a></td>
+            <td class="box"><a href="companycomplaincodedb">complain</a></td>
+            <td class="box"><a href="companyfeedbackcodedb">feedback</a></td>
+            <td class="box"><a href="companylink">signout</a></td>
+        </tr>
+    </table>
+</div>
+<div class="outerdiv">
+
+    <h1 class="slogan">"WELCOME SIR/MAM TO THE COMPANY DASHBOARD TO VIEW
+        ALL THE ORDERS,COMPLAINS,FEEDBACK,QUERY OF ALL THE CUSTOMERS"</h1>
+
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,14 @@
+{
+  "builds": [
+    {
+      "src": "ChargeFuel/wsgi.py",
+      "use": "@vercel/python"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "ChargeFuel/wsgi.py"
+    }
+  ]
+}
