@@ -1,6 +1,14 @@
 import sqlite3
+import os
 from django.shortcuts import render
 import datetime
+
+def get_db_path():
+    if os.environ.get('VERCEL'):
+        return '/tmp/db.sqlite3'
+    return os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'db.sqlite3')
+
+DB_PATH = get_db_path()
 # Create your views here.
 def homefun(request):
     return render(request,"index.html")
@@ -27,7 +35,7 @@ def signupdbcode(request):
     gender=request.POST['gender']
     dob=request.POST['dob']
     email=request.POST['mail']
-    con=sqlite3.connect("db.sqlite3");
+    con=sqlite3.connect(DB_PATH);
     operation=con.cursor()
     sql="insert into customersignup values(?,?,?,?,?,?,?,?,?)"
     values=(userid,password,fullname,address,city,contact,gender,dob,email)
@@ -39,7 +47,7 @@ def signupdbcode(request):
 def logindbcode(request):
     userid=request.POST['uid']
     pwd=request.POST['password']
-    con=sqlite3.connect('db.sqlite3')
+    con=sqlite3.connect(DB_PATH)
     operation=con.cursor()
     sql="select * from customersignup where Id=? and Password=?"
     values=(userid,pwd)
@@ -54,7 +62,7 @@ def contactdbcode(request):
     city=request.POST['city1']
     contact=request.POST['contact1']
     query=request.POST['query1']
-    con = sqlite3.connect('db.sqlite3');
+    con = sqlite3.connect(DB_PATH);
     operation = con.cursor()
     sql ="insert into contacttable values(?,?,?,?)"
     values =(fnm,city,contact,query)
@@ -71,7 +79,7 @@ def  settingsdbcode(request):
     oldpass = request.POST['opwd']
     newpass = request.POST['npwd']
     cnewpass = request.POST['cnpwd']
-    con = sqlite3.connect("db.sqlite3")
+    con = sqlite3.connect(DB_PATH)
     operation=con.cursor()
     sql="select *  from customersignup where Id=? and Password=?"
     values=(uid,oldpass)
@@ -93,7 +101,7 @@ def accountsfun(request):
 def accountsdbcode(request):
     uid = request.POST['id']
     password = request.POST['password']
-    connect = sqlite3.connect("db.sqlite3")
+    connect = sqlite3.connect(DB_PATH)
     operation = connect.cursor()
     sql = "select *  from customersignup where Id=? and Password=?"
     values = (uid, password)
@@ -114,7 +122,7 @@ def feedbackfun(request):
 def feedbackdbcode(request):
     uid=request.POST['id']
     ufeedback=request.POST['feedback']
-    con = sqlite3.connect('db.sqlite3');
+    con = sqlite3.connect(DB_PATH);
     operation = con.cursor()
     sql ="insert into feedbacktable values(?,?)"
     values = (uid,ufeedback)
@@ -130,7 +138,7 @@ def complaindbcode(request):
     customerid = request.POST['customerid']
     orderid=request.POST['orderid']
     complain = request.POST['complain']
-    con = sqlite3.connect("db.sqlite3")
+    con = sqlite3.connect(DB_PATH)
     operation = con.cursor()
     sql = "insert into customercomplaintable(customerid,orderid,dateofcomplain,complainstatus,complain) values(?,?,?,?,?)"
     values =(customerid,orderid,datetime.datetime.now(),"under process",complain)
@@ -150,7 +158,7 @@ def orderevdbcode(request):
     customerid = request.POST['customerid']
     droplocation = request.POST['droplocation']
     contact = request.POST['contact']
-    con = sqlite3.connect("db.sqlite3")
+    con = sqlite3.connect(DB_PATH)
     operation = con.cursor()
     sql = "insert into orderevchargingtable(customerid,droplocation,contact) values(?,?,?)"
     values =(customerid,droplocation,contact)
@@ -170,7 +178,7 @@ def orderfueldbcode(request):
     quantity = request.POST['quantity']
     droplocation = request.POST['droplocation']
     contact = request.POST['contact']
-    con = sqlite3.connect("db.sqlite3")
+    con = sqlite3.connect(DB_PATH)
     operation = con.cursor()
     sql = "insert into customerorderfueltable(ID,Fuelcategory,fueltype,quantity,droplocation,contact) values(?,?,?,?,?,?)"
     values =(cid,fcategory,ftype,quantity,droplocation,contact)
@@ -186,7 +194,7 @@ def companyfun(request):
 def companylogindbcode(request):
     userid=request.POST['uid']
     pwd=request.POST['password']
-    con=sqlite3.connect('db.sqlite3');
+    con=sqlite3.connect(DB_PATH);
     operation=con.cursor()
     sql="select * from companylogintable where ID=? and Password=?"
     values=(userid,pwd)
@@ -209,7 +217,7 @@ def companysettingsdbcode(request):
     oldpass = request.POST['opwd']
     newpass = request.POST['npwd']
     cnewpass = request.POST['cnpwd']
-    con = sqlite3.connect("db.sqlite3")
+    con = sqlite3.connect(DB_PATH)
     operation=con.cursor()
     sql="select *  from companylogintable where Id=? and Password=?"
     values=(uid,oldpass)
@@ -230,7 +238,7 @@ def loadcomplainfun(request):
     return render(request,"companycomplain.html")
 
 def  companycomplaindbcode(request):
-    con = sqlite3.connect("db.sqlite3")
+    con = sqlite3.connect(DB_PATH)
     operation=con.cursor()
     sql="select *  from customercomplaintable"
     result=operation.execute(sql)
@@ -241,7 +249,7 @@ def loadorderfuelfun(request):
     return render(request,"companyorderfuel.html")
 
 def  companyorderfueldbcode(request):
-    con = sqlite3.connect("db.sqlite3")
+    con = sqlite3.connect(DB_PATH)
     operation=con.cursor()
     sql="select *  from customerorderfueltable"
     result=operation.execute(sql)
@@ -252,7 +260,7 @@ def loadorderevfun(request):
     return render(request,"companyorderev.html")
 
 def  companyorderevdbcode(request):
-    con = sqlite3.connect("db.sqlite3")
+    con = sqlite3.connect(DB_PATH)
     operation=con.cursor()
     sql="select *  from orderevchargingtable"
     result=operation.execute(sql)
@@ -263,7 +271,7 @@ def companyfeedbackfun(request):
     return render(request,"companyfeedback.html")
 
 def  companyfeedbackdbcode(request):
-    con = sqlite3.connect("db.sqlite3")
+    con = sqlite3.connect(DB_PATH)
     operation=con.cursor()
     sql="select *  from feedbacktable"
     result=operation.execute(sql)
@@ -275,7 +283,7 @@ def companycustomersfun(request):
     return render(request,"companycustomers.html")
 
 def  companycustomersdbcode(request):
-    con = sqlite3.connect("db.sqlite3")
+    con = sqlite3.connect(DB_PATH)
     operation=con.cursor()
     sql="select *  from customersignup"
     result=operation.execute(sql)
@@ -287,7 +295,7 @@ def companycontactfun(request):
     return render(request,"companycontact.html")
 
 def  companycontactdbcode(request):
-    con = sqlite3.connect("db.sqlite3")
+    con = sqlite3.connect(DB_PATH)
     operation=con.cursor()
     sql="select *  from contacttable"
     result=operation.execute(sql)
