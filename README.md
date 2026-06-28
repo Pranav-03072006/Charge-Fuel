@@ -156,7 +156,7 @@ The project uses **SQLite3** with the following tables:
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/your-username/ChargeFuel.git
+   git clone https://github.com/Pranav-03072006/ChargeFuel.git
    cd ChargeFuel
    ```
 
